@@ -117,6 +117,11 @@ impl<'a, S, T> StreamOwned<S, T> where S: Session, T: Read + Write {
     fn as_stream(&'a mut self) -> Stream<'a, S, T> {
         Stream { sess: &mut self.sess, sock: &mut self.sock }
     }
+
+    /// Get certificates
+    pub fn get_peer_certificates(&'a self) -> Option<Vec<crate::key::Certificate>> {
+        self.sess.get_peer_certificates()
+    }
 }
 
 impl<S, T> Read for StreamOwned<S, T> where S: Session, T: Read + Write {
