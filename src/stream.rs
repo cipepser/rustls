@@ -1,4 +1,5 @@
 use std::io::{Read, Write, Result};
+use std::vec::Vec;
 use crate::session::Session;
 
 /// This type implements `io::Read` and `io::Write`, encapsulating
